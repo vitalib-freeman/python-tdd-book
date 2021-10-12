@@ -3,3 +3,4 @@ geckodriver.log
 virtualenv
 *pyc
 __pycache__
+*swp
