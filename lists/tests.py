@@ -1,5 +1,8 @@
+from django.urls import resolve
 from django.test import TestCase
+from django.http import HttpRequest
 
+from lists.views import home_page
 from lists.models import Item
 
 class HomePageTest(TestCase):
@@ -9,7 +12,7 @@ class HomePageTest(TestCase):
         self.assertTemplateUsed(response, 'home.html')
 
     def test_can_save_a_POST_request(self):
-        self.client.post('/', data={'item_text': 'A new list item'})
+        response = self.client.post('/', data={'item_text': 'A new list item'})
 
         self.assertEqual(Item.objects.count(), 1)
         new_item = Item.objects.first()
