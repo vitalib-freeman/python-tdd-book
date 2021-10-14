@@ -4,3 +4,4 @@ virtualenv
 *pyc
 __pycache__
 *swp
+*swo
