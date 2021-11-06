@@ -1,0 +1,15 @@
+[Unit]
+Description=Gunicorn server for DOMAIN
+
+[Service]
+Restart=on-failure
+User=vitalib
+WorkingDirectory=/home/vitalib/sites/DOMAIN
+EnvironmentFile=/home/vitalib/sites/DOMAIN/.env
+
+ExecStart=/home/vitalib/sites/DOMAIN/virtualenv/bin/gunicorn \
+  --bind unix:/tmp/DOMAIN.socket \
+  superlists.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
